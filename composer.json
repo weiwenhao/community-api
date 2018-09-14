@@ -8,7 +8,8 @@
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "weiwenhao/including": "dev-develop"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -56,5 +57,11 @@
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "weiwenhao": {
+            "type": "path",
+            "url": "/Users/max/Code/including"
+        }
+    }
 }

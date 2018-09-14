@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66ca7343889332c2b8ecca11c251430c",
+    "content-hash": "0ce03a511e9c9ea0f216742cd4ecee41",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2525,6 +2525,61 @@
                 "environment"
             ],
             "time": "2018-07-29T20:33:41+00:00"
+        },
+        {
+            "name": "weiwenhao/including",
+            "version": "dev-develop",
+            "dist": {
+                "type": "path",
+                "url": "/Users/max/Code/including",
+                "reference": "c6c6ce66c5821f46d5083537d030a88f4524f6a8",
+                "shasum": null
+            },
+            "require": {
+                "illuminate/support": "5.5.*|5.6.*|5.7.*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "^7.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Weiwenhao\\Including\\Providers\\IncludesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Weiwenhao\\Including\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Weiwenhao\\Including\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "weiwenhao",
+                    "email": "1101140857@qq.com"
+                }
+            ],
+            "description": "state machine",
+            "keywords": [
+                "api",
+                "including",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/weiwenhao/including/issues",
+                "source": "https://github.com/weiwenhao/including"
+            }
         }
     ],
     "packages-dev": [
@@ -3451,16 +3506,16 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c"
+                "reference": "050bedf145a257b1ff02746c31894800e5122946"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/cecbc684605bb0cc288828eb5d65d93d5c676d3c",
-                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/050bedf145a257b1ff02746c31894800e5122946",
+                "reference": "050bedf145a257b1ff02746c31894800e5122946",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3471,6 +3526,9 @@
             },
             "require": {
                 "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.1"
             },
             "type": "library",
             "extra": {
@@ -3500,7 +3558,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2018-06-11T11:44:00+00:00"
+            "time": "2018-09-13T20:33:42+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -4483,7 +4541,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "weiwenhao/including": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

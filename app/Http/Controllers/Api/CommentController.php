@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Model;
+use App\Models\Comment;
 use App\Models\Post;
-use App\Models\User;
 use App\Resources\PostResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class PostController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +19,10 @@ class PostController extends Controller
      */
     public function index($parent = null)
     {
-        $query = $parent ? $parent->posts() : Post::query();
-
+        $query = $parent ? $parent->comments() : Comment::query();
         $posts = $query->parseSelect()->latest()->paginate();
 
-        return PostResource::make($posts);
+        return PostResource::parse($posts);
     }
 
     /**
@@ -53,9 +51,11 @@ class PostController extends Controller
      * @param  \App\Models\Post $post
      * @return PostResource
      */
-    public function show($post)
+    public function show(Post $post)
     {
-        return $resource = PostResource::make($post);
+        $resource = PostResource::parse($post);
+
+        return $resource;
     }
 
     /**

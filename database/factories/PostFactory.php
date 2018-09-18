@@ -3,9 +3,11 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Models\Post::class, function (Faker $faker) {
+    $title = $faker->sentence;
+
     return [
-        'title' => $faker->title,
-        'description' => $faker->sentence,
+        'title' => $title,
+        'description' => $faker->sentence(3),
         'cover' => $faker->imageUrl(),
         'content' => $faker->paragraphs(mt_rand(5, 10), true),
         'comment_count' => mt_rand(0, 20),
@@ -14,6 +16,6 @@ $factory->define(App\Models\Post::class, function (Faker $faker) {
         'give_count' => mt_rand(0, 10),
         'read_count' => mt_rand(0,300),
         'word_count' => mt_rand(250, 8000),
-        'slug' => str_random(),
+        'slug' => kebab_case($title),
     ];
 });

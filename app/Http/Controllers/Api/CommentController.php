@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Resources\CommentResource;
 use App\Resources\PostResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,14 +16,14 @@ class CommentController extends Controller
      * Display a listing of the resource.
      *
      * @param null $parent
-     * @return PostResource
+     * @return CommentResource
      */
     public function index($parent = null)
     {
         $query = $parent ? $parent->comments() : Comment::query();
-        $posts = $query->parseSelect()->latest()->paginate();
+        $comments = $query->parseSelect()->latest()->paginate();
 
-        return PostResource::parse($posts);
+        return CommentResource::make($comments);
     }
 
     /**
@@ -53,7 +54,7 @@ class CommentController extends Controller
      */
     public function show(Post $post)
     {
-        $resource = PostResource::parse($post);
+        $resource = PostResource::make($post);
 
         return $resource;
     }

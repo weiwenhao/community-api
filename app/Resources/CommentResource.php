@@ -8,5 +8,10 @@ class CommentResource extends Resource
 {
     protected $baseColumns = ['id', 'content', 'user_id', 'like_count', 'reply_count', 'floor'];
 
-    protected $includeRelations = ['user'];
+    protected $includeRelations = [
+        'user',
+        'replies' => [
+            'resource' => CommentReplyResource::class
+        ]
+    ];
 }

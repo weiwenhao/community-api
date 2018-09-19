@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Model;
 use App\Models\Post;
 use App\Models\User;
+use App\Resources\CommentResource;
 use App\Resources\PostResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

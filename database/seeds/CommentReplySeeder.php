@@ -11,6 +11,6 @@ class CommentReplySeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\CommentReply::class, 500)->create();
+        factory(\App\Models\CommentReply::class, 1000)->create();
     }
 }

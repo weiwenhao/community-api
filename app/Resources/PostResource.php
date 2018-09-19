@@ -14,10 +14,19 @@ class PostResource extends Resource
 
     protected $includeMeta = ['selected_comments'];
 
+    /*
+     * 我只希望也 show方法的时候调用该 include
+     * $this->getCollection 未免太不优雅
+     *
+     */
     public function selectedComments()
     {
-        $post = $this->getCollection()->first();
+        $post = clone $this->getCollection()->first();
 
-        return $post->selectedComments;
+        $comments = $post->selectedComments;
+
+        $resource = CommentResource::make($comments, 'user,replies.user');
+
+        return $resource->getData();
     }
 }

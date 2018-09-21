@@ -33,6 +33,12 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('user', User::class);
         Route::model('comment', Comment::class);
         Route::model('post', Post::class);
+
+
+        Route::bind('virtual', function ($value) {
+            $virtual = "App\\Virtual\\" . studly_case($value);
+            return new $virtual($value);
+        });
     }
 
     /**

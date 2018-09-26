@@ -10,4 +10,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function created()
+    {
+        return response(null, 201);
+    }
+
+    public function noContent()
+    {
+        return response(null, 204);
+    }
 }

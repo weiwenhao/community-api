@@ -24,9 +24,31 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('posts', 'PostController');
 Route::get('users/{user}/posts', 'PostController@index');
 
+// 用户行为
+Route::post('posts/{post_id}/likes', 'LikePostController@store');
+Route::delete('posts/{post_id}/likes', 'LikePostController@destroy');
+
+Route::post('comments/{comment_id}/likes', 'LikeCommentController@store');
+Route::delete('comments/{comment_id}/likes', 'LikeCommentController@destroy');
+
+Route::post('collections/{collection_id}/follows', 'FollowCollectionController@store');
+Route::delete('collections/{collection_id}/follows', 'FollowCollectionController@destroy');
+
+
+Route::post('users/{users_id}/follows', 'FollowUserController@store');
+Route::delete('users/{user_id}/follows', 'FollowUserController@destroy');
+
+/**
+ * virtual = hot30/hot7/recommend
+ */
 Route::get('{virtual}/posts', 'PostController@index');
 
 /**
  * include=?include=user,replies.user
  */
 Route::get('posts/{post}/comments', 'CommentController@index');
+
+/**
+ * 创建comment/取消创建comment
+ * 创建reply/取消创建reply
+ */

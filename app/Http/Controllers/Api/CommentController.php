@@ -27,69 +27,31 @@ class CommentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      */
     public function store(Request $request)
     {
-        //
-    }
+        $data = $request->all();
+        $data['user_id'] = \Auth::id();
+        $comment = Comment::create($data);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post $post
-     * @return PostResource
-     */
-    public function show(Post $post)
-    {
-        $resource = PostResource::make($post);
-
-        return $resource;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return Response
-     */
-    public function edit(Post $post)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return Response
-     */
-    public function update(Request $request, Post $post)
-    {
-        //
+        return \response(CommentResource::make($comment), 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
-     * @return Response
+     * @param Comment $comment
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
+     * @throws \Exception
      */
-    public function destroy(Post $post)
+    public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return \response(null, 204);
     }
 }

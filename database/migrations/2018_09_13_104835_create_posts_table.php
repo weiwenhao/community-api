@@ -29,6 +29,7 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('user_id')->index();
 
             $table->timestamp('published_at')->nullable();
+            $table->timestamp('commented_at')->nullable();
             $table->timestamps();
         });
     }

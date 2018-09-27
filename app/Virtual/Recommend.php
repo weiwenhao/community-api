@@ -2,6 +2,8 @@
 
 namespace App\Virtual;
 
+use App\Models\Post;
+
 class Recommend extends Virtual
 {
     public function posts()

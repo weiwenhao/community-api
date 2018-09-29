@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Post;
+use Illuminate\Database\Eloquent\Builder;
+use Weiwenhao\Including\Exceptions\IteratorBreakException;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,4 +16,9 @@
 */
 
 Route::get('/', function () {
+    Builder::macro('includeSelect', function () {
+        dd(get_class_methods($this));
+    });
+
+    dd(Post::limit(3)->includeSelect(123)->get()->toArray());
 });

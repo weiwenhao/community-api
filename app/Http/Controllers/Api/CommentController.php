@@ -21,7 +21,7 @@ class CommentController extends Controller
     public function index($parent = null)
     {
         $query = $parent ? $parent->comments() : Comment::query();
-        $comments = $query->parseSelect()->latest()->paginate();
+        $comments = $query->includeSelect()->latest()->paginate();
 
         return CommentResource::make($comments);
     }

@@ -16,9 +16,7 @@ use Weiwenhao\Including\Exceptions\IteratorBreakException;
 */
 
 Route::get('/', function () {
-    Builder::macro('includeSelect', function () {
-        dd(get_class_methods($this));
-    });
-
-    dd(Post::limit(3)->includeSelect(123)->get()->toArray());
+    $stack = new SplStack();
+    dd($stack);
+    dd($stack->current());
 });

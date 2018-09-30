@@ -17,13 +17,13 @@ class PostController extends Controller
      * Display a listing of the resource.
      *
      * @param null $parent
-     * @return PostResource
+     * @return \Weiwenhao\Including\Resource
      */
     public function index($parent = null)
     {
         $query = $parent ? $parent->posts() : Post::query();
 
-        $posts = $query->parseSelect()->latest()->paginate();
+        $posts = $query->includeSelect()->latest()->paginate();
 
         return PostResource::make($posts);
     }
@@ -52,7 +52,7 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Post $post
-     * @return PostResource
+     * @return \Weiwenhao\Including\Resource
      */
     public function show($post)
     {

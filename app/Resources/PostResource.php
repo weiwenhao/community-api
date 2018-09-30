@@ -10,7 +10,7 @@ class PostResource extends Resource
 
     protected $includeColumns = ['content'];
 
-    protected $includeRelations = ['user'];
+    protected $includeRelations = ['user', 'comments'];
 
     protected $includeMeta = ['selected_comments'];
 
@@ -21,7 +21,7 @@ class PostResource extends Resource
      */
     public function selectedComments()
     {
-        $post = clone $this->getCollection()->first();
+        $post = $this->getCollection()->first();
 
         $comments = $post->selectedComments;
 

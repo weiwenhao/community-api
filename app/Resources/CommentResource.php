@@ -2,7 +2,7 @@
 
 namespace App\Resources;
 
-use Weiwenhao\Including\Resource;
+use Weiwenhao\TreeQL\Resource;
 
 class CommentResource extends Resource
 {

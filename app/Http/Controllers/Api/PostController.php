@@ -17,13 +17,13 @@ class PostController extends Controller
      * Display a listing of the resource.
      *
      * @param null $parent
-     * @return \Weiwenhao\Including\Resource
+     * @return \Weiwenhao\TreeQL\Resource
      */
     public function index($parent = null)
     {
         $query = $parent ? $parent->posts() : Post::query();
 
-        $posts = $query->includeSelect()->latest()->paginate();
+        $posts = $query->columns()->latest()->paginate();
 
         return PostResource::make($posts);
     }
@@ -52,7 +52,7 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Post $post
-     * @return \Weiwenhao\Including\Resource
+     * @return \Weiwenhao\TreeQL\Resource
      */
     public function show($post)
     {

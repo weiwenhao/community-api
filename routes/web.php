@@ -14,5 +14,6 @@
 
 Route::get('/', function () {
     $posts = \App\Models\Post::columns()->first();
+
     return \App\Resources\PostResource::make($posts);
 });

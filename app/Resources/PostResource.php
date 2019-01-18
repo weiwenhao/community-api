@@ -2,7 +2,7 @@
 
 namespace App\Resources;
 
-use Weiwenhao\Including\Resource;
+use Weiwenhao\TreeQL\Resource;
 
 class PostResource extends Resource
 {
@@ -54,11 +54,6 @@ class PostResource extends Resource
         return array_random([true, false]);
     }
 
-    /*
-     * 我只希望也 show方法的时候调用该 include
-     * $this->getCollection 未免太不优雅
-     *
-     */
     public function selectedComments($params)
     {
         $post = $this->getCollection()->first();
@@ -69,5 +64,4 @@ class PostResource extends Resource
 
         return $resource->getResponseData();
     }
-
 }

@@ -160,7 +160,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        \Weiwenhao\TreeQL\Providers\TreeQLServiceProvider::class,
     ],
 
     /*

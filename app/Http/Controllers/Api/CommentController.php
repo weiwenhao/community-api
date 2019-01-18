@@ -16,12 +16,12 @@ class CommentController extends Controller
      * Display a listing of the resource.
      *
      * @param null $parent
-     * @return \Weiwenhao\Including\Resource
+     * @return \Weiwenhao\TreeQL\Resource
      */
     public function index($parent = null)
     {
         $query = $parent ? $parent->comments() : Comment::query();
-        $comments = $query->includeSelect()->latest()->paginate();
+        $comments = $query->columns()->latest()->paginate();
 
         return CommentResource::make($comments);
     }

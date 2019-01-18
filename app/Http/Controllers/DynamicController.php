@@ -46,7 +46,6 @@ class DynamicController extends Controller
      */
     public function show(Dynamic $dynamic)
     {
-        //
     }
 
     /**

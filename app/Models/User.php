@@ -19,13 +19,18 @@ class User extends Model implements
 {
     use Notifiable,Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail;
 
+
+//    protected $casts = [
+//       'oauth' => 'array'
+//    ];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nickname', 'email', 'password', 'oauth', 'rest', 'avatar', 'email', 'phone_number'
     ];
 
     /**
@@ -34,7 +39,7 @@ class User extends Model implements
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+//        'password', 'remember_token',
     ];
 
 

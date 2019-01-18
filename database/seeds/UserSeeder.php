@@ -11,6 +11,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\User::class, 50)->create();
+        for ($i = 0; $i < 1; ++$i) {
+            $data = factory(\App\Models\User::class)->times(3000)->make();
+            \DB::table('users')->insert($data->toArray());
+        }
     }
 }

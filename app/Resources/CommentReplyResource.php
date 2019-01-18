@@ -6,7 +6,9 @@ use Weiwenhao\Including\Resource;
 
 class CommentReplyResource extends Resource
 {
-    protected $baseColumns = ['*'];
+    protected $default = ['*'];
 
-    protected $includeRelations = ['user'];
+    protected $columns = ['*'];
+
+    protected $relations = ['user'];
 }

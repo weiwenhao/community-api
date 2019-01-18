@@ -17,18 +17,21 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('nickname');
             $table->string('avatar');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('phone_number')->unique();
+            $table->string('phone_number');
             $table->string('password');
 
-            $table->unsignedInteger('follow_count');
-            $table->unsignedInteger('fans_count');
-            $table->unsignedInteger('post_count');
-            $table->unsignedInteger('word_count');
-            $table->unsignedInteger('like_count');
+            $table->unsignedInteger('follow_count')->default(0);
+            $table->unsignedInteger('fans_count')->default(0);
+            $table->unsignedInteger('post_count')->default(0);
+            $table->unsignedInteger('word_count')->default(0);
+            $table->unsignedInteger('like_count')->default(0);
 
             $table->json('oauth')->nullable();
+
+            $table->string('google_id')->nullable()->unique()->virtualAs('`oauth`->>"$.google_id"');
+
             $table->timestamps();
         });
     }

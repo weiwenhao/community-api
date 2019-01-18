@@ -6,12 +6,13 @@ use Weiwenhao\Including\Resource;
 
 class CommentResource extends Resource
 {
-    protected $baseColumns = ['id', 'content', 'user_id', 'post_id', 'like_count', 'reply_count', 'floor'];
+    protected $default = ['id', 'content', 'user_id', 'post_id', 'like_count', 'reply_count', 'floor'];
+    protected $columns = ['id', 'content', 'user_id', 'post_id', 'like_count', 'reply_count', 'floor'];
 
-    protected $includeRelations = [
+    protected $relations = [
         'user',
         'replies' => [
-            'resource' => CommentReplyResource::class
+            'resource' => CommentReplyResource::class,
         ]
     ];
 }

@@ -6,20 +6,60 @@ use Weiwenhao\Including\Resource;
 
 class PostResource extends Resource
 {
-    protected $baseColumns = ['id', 'slug', 'title', 'description', 'cover', 'comment_count', 'like_count', 'user_id'];
+    protected $default = [
+        'id',
+        'slug',
+        'title',
+        'description',
+        'cover',
+        'comment_count',
+        'like_count',
+        'user_id'
+    ];
 
-    protected $includeColumns = ['content'];
+    protected $columns = [
+        'id' => [
+            'alias' => 'code'
+        ],
+        'slug',
+        'title',
+        'description',
+        'cover',
+        'comment_count',
+        'like_count',
+        'user_id',
+        'content' => [
+            'alias' => 'desc'
+        ]
+    ];
 
-    protected $includeRelations = ['user', 'comments'];
+    protected $relations = [
+        'user' => [
+            'resource' => UserResource::class,
+            'alias' => 'vip'
+        ],
+        'comments' => [
+            'alias' => 'test_comment'
+        ]
+    ];
 
-    protected $includeMeta = ['selected_comments'];
+    protected $meta = [
+        'selected_comments'
+    ];
+
+    protected $each = ['is_like'];
+
+    public function isLike($item, $params)
+    {
+        return array_random([true, false]);
+    }
 
     /*
      * 我只希望也 show方法的时候调用该 include
      * $this->getCollection 未免太不优雅
      *
      */
-    public function selectedComments()
+    public function selectedComments($params)
     {
         $post = $this->getCollection()->first();
 
@@ -27,6 +67,7 @@ class PostResource extends Resource
 
         $resource = CommentResource::make($comments, 'user,replies.user');
 
-        return $resource->getData();
+        return $resource->getResponseData();
     }
+
 }

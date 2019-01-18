@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Post;
-use Illuminate\Database\Eloquent\Builder;
-use Weiwenhao\Including\Exceptions\IteratorBreakException;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +13,6 @@ use Weiwenhao\Including\Exceptions\IteratorBreakException;
 */
 
 Route::get('/', function () {
-    $stack = new SplStack();
-    dd($stack);
-    dd($stack->current());
+    $posts = \App\Models\Post::columns()->first();
+    return \App\Resources\PostResource::make($posts);
 });

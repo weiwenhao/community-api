@@ -6,7 +6,7 @@ use Weiwenhao\Including\Resource;
 
 class UserResource extends Resource
 {
-    protected $baseColumns = ['id', 'nickname', 'avatar'];
+    protected $default = ['id', 'nickname', 'avatar'];
 
-    protected $includeColumns = ['password'];
+    protected $columns = ['id', 'nickname', 'avatar', 'password'];
 }

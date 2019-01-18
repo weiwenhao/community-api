@@ -16,7 +16,7 @@ class CommentController extends Controller
      * Display a listing of the resource.
      *
      * @param null $parent
-     * @return CommentResource
+     * @return \Weiwenhao\Including\Resource
      */
     public function index($parent = null)
     {

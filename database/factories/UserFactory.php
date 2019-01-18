@@ -25,6 +25,11 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'fans_count' => mt_rand(0, 100),
         'post_count' => mt_rand(0, 100),
         'word_count' => mt_rand(0, 100),
-        'like_count' => mt_rand(0, 100)
+        'like_count' => mt_rand(0, 100),
+        'oauth' => mt_rand(0, 1) ? json_encode([
+            'google_id' => str_random()
+        ]) : json_encode([
+            'facebook_id' => str_random()
+        ])
     ];
 });

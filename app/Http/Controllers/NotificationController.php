@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notification;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -14,7 +15,6 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**

@@ -18,7 +18,6 @@ class CreateUsersTable extends Migration
             $table->string('nickname');
             $table->string('avatar');
             $table->string('email');
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number');
             $table->string('password');
 
@@ -30,8 +29,7 @@ class CreateUsersTable extends Migration
 
             $table->json('oauth')->nullable();
 
-            $table->string('google_id')->nullable()->unique()->virtualAs('`oauth`->>"$.google_id"');
-
+//            $table->string('google_id')->nullable()->unique()->virtualAs('`oauth`->>"$.google_id"');
             $table->timestamps();
         });
     }

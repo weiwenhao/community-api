@@ -17,11 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/**
- * :post = slug
- * include=content,user,selected_comments
- */
-Route::resource('posts', 'PostController');
+Route::get('posts', 'PostController@index');
+Route::get('posts/{post}', 'PostController@show');
+Route::get('posts/{post}/comments', 'CommentController@index');
+
 Route::get('users/{user}/posts', 'PostController@index');
 
 // 用户行为
@@ -47,8 +46,3 @@ Route::get('{virtual}/posts', 'PostController@index');
  * include=?include=user,replies.user
  */
 Route::get('posts/{post}/comments', 'CommentController@index');
-
-/**
- * 创建comment/取消创建comment
- * 创建reply/取消创建reply
- */

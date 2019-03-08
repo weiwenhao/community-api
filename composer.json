@@ -10,6 +10,7 @@
         "itsgoingd/clockwork": "^3.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
+        "staudenmeir/eloquent-eager-limit": "^1.0",
         "weiwenhao/tree-ql": "dev-develop"
     },
     "require-dev": {
@@ -28,7 +29,10 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files":[
+            "app/Services/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

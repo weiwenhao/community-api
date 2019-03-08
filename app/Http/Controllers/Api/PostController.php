@@ -56,7 +56,7 @@ class PostController extends Controller
      */
     public function show($post)
     {
-        return $resource = PostResource::make($post);
+        return PostResource::make($post);
     }
 
     /**

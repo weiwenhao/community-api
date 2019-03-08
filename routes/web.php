@@ -13,7 +13,27 @@
 */
 
 Route::get('/', function () {
-    $posts = \App\Models\Post::columns()->first();
-
-    return \App\Resources\PostResource::make($posts);
+    $_ = ['sdk', 'ookfkf'];
+    $_[0];
+    $_[1];
+    dd($_);
 });
+
+
+Route::get('/test', function () {
+
+    /** @var \Illuminate\Database\Eloquent\Collection $users */
+//    $users = \App\Models\User::limit(10)->get();
+//    $users->map(function ($item) {
+//        dd($item->posts());
+//    });
+//
+//    $users->load(['posts' => function ($query) {
+//        $query->limit(3);
+//    }]);
+    $posts = \App\Models\Post::limit(3)->get();
+    $posts->map(function ($item) {
+        dd($item->comments());
+    });
+});
+

@@ -15,21 +15,24 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('code')->index();
             $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('description');
-            $table->text('content')->nullable();
+
             $table->string('cover')->nullable();
-            $table->unsignedInteger('comment_count');
-            $table->unsignedInteger('like_count');
-            $table->unsignedInteger('read_count');
-            $table->unsignedInteger('word_count');
-            $table->unsignedInteger('give_count');
+            $table->string('description');
+
+            $table->text('content')->nullable();
+            $table->unsignedInteger('comment_count')->default(0);
+            $table->unsignedInteger('like_count')->default(0);
+            $table->unsignedInteger('read_count')->default(0);
+            $table->unsignedInteger('word_count')->default(0);
+            $table->unsignedInteger('give_count')->default(0)->comment('赞赏数量');
 
             $table->unsignedInteger('user_id')->index();
 
-            $table->timestamp('published_at')->nullable();
-            $table->timestamp('commented_at')->nullable();
+            $table->timestamp('published_at')->nullable()->comment('发布时间');
+            $table->timestamp('selected_at')->nullable()->comment('是否精选/精选时间');
+
             $table->timestamps();
         });
     }

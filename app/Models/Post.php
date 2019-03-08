@@ -4,10 +4,10 @@ namespace App\Models;
 
 class Post extends Model
 {
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'code';
+//    }
 
     public function user()
     {

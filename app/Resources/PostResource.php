@@ -8,7 +8,7 @@ class PostResource extends Resource
 {
     protected $default = [
         'id',
-        'slug',
+        'code',
         'title',
         'description',
         'cover',
@@ -18,29 +18,25 @@ class PostResource extends Resource
     ];
 
     protected $columns = [
-        'id' => [
-            'alias' => 'code'
-        ],
-        'slug',
+        'id',
+        'code',
         'title',
         'description',
         'cover',
+        'read_count',
+        'word_count',
+        'give_count',
         'comment_count',
         'like_count',
         'user_id',
-        'content' => [
-            'alias' => 'desc'
-        ]
+        'content',
+        'selected_at',
+        'published_at'
     ];
 
     protected $relations = [
-        'user' => [
-            'resource' => UserResource::class,
-            'alias' => 'vip'
-        ],
-        'comments' => [
-            'alias' => 'test_comment'
-        ]
+        'user',
+        'comments'
     ];
 
     protected $meta = [
@@ -48,6 +44,7 @@ class PostResource extends Resource
     ];
 
     protected $each = ['is_like'];
+
 
     public function isLike($item, $params)
     {

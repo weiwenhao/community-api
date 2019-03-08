@@ -17,7 +17,7 @@ class CreateNotificationsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->json('anchor')->comment('{href: "/posts/aaa", text: "文章标题"}');
-            $table->json('content')->comment('{call_user: {id: 123, nickname: "bbb"},  text: "我是评论或者回复的内容共"}');
+//            $table->json('content')->comment('{call_user: {id: 123, nickname: "bbb"},  text: "我是评论或者回复的内容共"}');
             $table->unsignedInteger('sender_id')->index();
             $table->unsignedInteger('receiver_id')->index();
             $table->timestamps();

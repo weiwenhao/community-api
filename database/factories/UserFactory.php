@@ -20,16 +20,11 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'phone_number' => $faker->phoneNumber,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-
+        'description' => $faker->sentence,
         'follow_count' => mt_rand(0, 100),
         'fans_count' => mt_rand(0, 100),
         'post_count' => mt_rand(0, 100),
         'word_count' => mt_rand(0, 100),
         'like_count' => mt_rand(0, 100),
-        'oauth' => mt_rand(0, 1) ? json_encode([
-            'google_id' => str_random()
-        ]) : json_encode([
-            'facebook_id' => str_random()
-        ])
     ];
 });

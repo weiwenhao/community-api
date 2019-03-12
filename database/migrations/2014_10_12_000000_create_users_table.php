@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->string('password');
+            $table->string('description')->nullable()->comment('用户自我描述');
 
             $table->unsignedInteger('follow_count')->default(0);
             $table->unsignedInteger('fans_count')->default(0);

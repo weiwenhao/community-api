@@ -8,5 +8,5 @@ class UserResource extends Resource
 {
     protected $default = ['id', 'nickname', 'avatar'];
 
-    protected $columns = ['id', 'nickname', 'avatar', 'password'];
+    protected $columns = ['id', 'nickname', 'avatar', 'description', 'password'];
 }

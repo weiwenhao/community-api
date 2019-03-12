@@ -8,7 +8,6 @@ class PostResource extends Resource
 {
     protected $default = [
         'id',
-        'code',
         'title',
         'description',
         'cover',
@@ -19,7 +18,6 @@ class PostResource extends Resource
 
     protected $columns = [
         'id',
-        'code',
         'title',
         'description',
         'cover',
@@ -36,17 +34,26 @@ class PostResource extends Resource
 
     protected $relations = [
         'user',
-        'comments'
+        'comments' => [
+            'resource' => CommentResource::class,
+        ]
     ];
 
     protected $meta = [
         'selected_comments'
     ];
 
-    protected $each = ['is_like'];
+    protected $custom = [
+        'liked'
+    ];
 
 
-    public function isLike($item, $params)
+    /**
+     * @param $item
+     * @param $params
+     * @return mixed
+     */
+    public function liked($item, $params)
     {
         return array_random([true, false]);
     }

@@ -29,6 +29,17 @@ class PostController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Post $post
+     * @return \Weiwenhao\TreeQL\Resource
+     */
+    public function show($post)
+    {
+        return PostResource::make($post);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return Response
@@ -48,16 +59,7 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post $post
-     * @return \Weiwenhao\TreeQL\Resource
-     */
-    public function show($post)
-    {
-        return PostResource::make($post);
-    }
+
 
     /**
      * Show the form for editing the specified resource.

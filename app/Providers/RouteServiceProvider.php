@@ -32,7 +32,10 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::model('user', User::class);
         Route::model('comment', Comment::class);
-        Route::model('post', Post::class);
+
+        Route::bind('post', function ($value) {
+            return Post::columns()->where('id', $value)->first();
+        });
 
 
         Route::bind('virtual', function ($value) {

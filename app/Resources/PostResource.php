@@ -58,14 +58,17 @@ class PostResource extends Resource
         return array_random([true, false]);
     }
 
-    public function selectedComments($params)
+    public function selectedComments()
     {
-        $post = $this->getCollection()->first();
+        $post = $this->getModel();
 
         $comments = $post->selectedComments;
 
-        $resource = CommentResource::make($comments, 'user,replies.user');
+        // 这里的操作类似于 $comments->load(['user', 'replies.user'])
+        // 但是load可不会帮你管理Column. 因此我们使用Resource来构造
+        $commentResource = CommentResource::make($comments, 'user,replies.user');
 
-        return $resource->getResponseData();
+        // getResponseData既获取CommentResource解析后并构造后的结构数组
+        return $commentResource->getResponseData();
     }
 }

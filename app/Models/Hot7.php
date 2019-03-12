@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Virtual;
+namespace App\Models;
 
-use App\Models\Post;
-
-class Hot30 extends Virtual
+class Hot7 extends Virtual
 {
     public function posts()
     {

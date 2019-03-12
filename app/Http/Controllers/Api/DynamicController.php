@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Notification;
-use App\Models\Post;
+use App\Http\Controllers\Controller;
+use App\Models\Dynamic;
 use Illuminate\Http\Request;
 
-class NotificationController extends Controller
+class DynamicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +15,7 @@ class NotificationController extends Controller
      */
     public function index()
     {
+        //
     }
 
     /**
@@ -41,21 +42,20 @@ class NotificationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Notification  $notification
+     * @param  \App\Models\Dynamic  $dynamic
      * @return \Illuminate\Http\Response
      */
-    public function show(Notification $notification)
+    public function show(Dynamic $dynamic)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Notification  $notification
+     * @param  \App\Models\Dynamic  $dynamic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Notification $notification)
+    public function edit(Dynamic $dynamic)
     {
         //
     }
@@ -64,10 +64,10 @@ class NotificationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Notification  $notification
+     * @param  \App\Models\Dynamic  $dynamic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Notification $notification)
+    public function update(Request $request, Dynamic $dynamic)
     {
         //
     }
@@ -75,10 +75,10 @@ class NotificationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Notification  $notification
+     * @param  \App\Models\Dynamic  $dynamic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notification $notification)
+    public function destroy(Dynamic $dynamic)
     {
         //
     }

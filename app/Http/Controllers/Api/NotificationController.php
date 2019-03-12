@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Dynamic;
+use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
-class DynamicController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,6 @@ class DynamicController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -41,20 +41,21 @@ class DynamicController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Dynamic  $dynamic
+     * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function show(Dynamic $dynamic)
+    public function show(Notification $notification)
     {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Dynamic  $dynamic
+     * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dynamic $dynamic)
+    public function edit(Notification $notification)
     {
         //
     }
@@ -63,10 +64,10 @@ class DynamicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Dynamic  $dynamic
+     * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dynamic $dynamic)
+    public function update(Request $request, Notification $notification)
     {
         //
     }
@@ -74,10 +75,10 @@ class DynamicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Dynamic  $dynamic
+     * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dynamic $dynamic)
+    public function destroy(Notification $notification)
     {
         //
     }

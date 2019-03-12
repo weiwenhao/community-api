@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Virtual;
+namespace App\Models;
 
 class Virtual
 {

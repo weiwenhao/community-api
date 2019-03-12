@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('posts', 'PostController@index');
 Route::get('posts/{post}', 'PostController@show');
 Route::get('posts/{post}/comments', 'CommentController@index');
@@ -41,8 +37,3 @@ Route::delete('users/{user_id}/follows', 'FollowUserController@destroy');
  * virtual = hot30/hot7/recommend
  */
 Route::get('{virtual}/posts', 'PostController@index');
-
-/**
- * include=?include=user,replies.user
- */
-Route::get('posts/{post}/comments', 'CommentController@index');

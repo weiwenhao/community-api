@@ -7,11 +7,10 @@
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
-        "itsgoingd/clockwork": "^3.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "staudenmeir/eloquent-eager-limit": "^1.0",
-        "weiwenhao/tree-ql": "dev-develop"
+        "weiwenhao/tree-ql": "^0.6.0@alpha"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -63,11 +62,5 @@
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": {
-        "weiwenhao": {
-            "type": "path",
-            "url": "/Users/max/Code/tree-ql"
-        }
-    }
+    "prefer-stable": true
 }

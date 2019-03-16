@@ -46,4 +46,9 @@ class User extends Model implements
     {
         return $this->hasMany(Post::class);
     }
+
+    public function drafts()
+    {
+        return $this->hasMany(Draft::class);
+    }
 }

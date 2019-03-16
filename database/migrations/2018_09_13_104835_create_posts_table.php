@@ -15,11 +15,10 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code')->index();
             $table->string('title');
 
             $table->string('cover')->nullable();
-            $table->string('description');
+            $table->string('description')->nullable();
 
             $table->text('content')->nullable();
             $table->unsignedInteger('comment_count')->default(0);
@@ -32,6 +31,9 @@ class CreatePostsTable extends Migration
 
             $table->timestamp('published_at')->nullable()->comment('发布时间');
             $table->timestamp('selected_at')->nullable()->comment('是否精选/精选时间');
+            $table->timestamp('commented_at')->nullable()->comment('评论时间');
+
+            $table->integer('heat')->default(0)->index()->comment('热度');
 
             $table->timestamps();
         });

@@ -16,7 +16,9 @@ class CreateCollectionPostTable extends Migration
         Schema::create('collection_post', function (Blueprint $table) {
             $table->unsignedInteger('post_id');
             $table->unsignedInteger('collection_id');
-            $table->timestamp('passed_at')->nullable();
+
+            $table->timestamp('passed_at')->nullable()->comment('审核通过时间');
+
             $table->timestamps();
 
             $table->index('post_id');

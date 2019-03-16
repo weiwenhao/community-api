@@ -11,8 +11,12 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        $data = factory(\App\Models\Post::class)->times(100)->make();
+//        for (;;) {
+        $data = factory(\App\Models\Post::class)->times(1000)->make();
 
         \App\Models\Post::insert($data->toArray());
+
+        unset($data);
+//        }
     }
 }

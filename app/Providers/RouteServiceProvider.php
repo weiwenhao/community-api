@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Comment;
+use App\Models\Draft;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -32,11 +33,11 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::model('user', User::class);
         Route::model('comment', Comment::class);
+        Route::model('draft', Draft::class);
 
         Route::bind('post', function ($value) {
             return Post::columns()->where('id', $value)->first();
         });
-
 
         Route::bind('virtual', function ($value) {
             $virtual = "App\\Virtual\\" . studly_case($value);

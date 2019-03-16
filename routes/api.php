@@ -13,9 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
+// 帖子
 Route::get('posts', 'PostController@index');
 Route::get('posts/{post}', 'PostController@show');
+Route::get('posts/{post}/collections', 'CollectionController@index');
+Route::get('posts/{post}/recommend-posts', 'PostController@indexOfRecommend');
 Route::get('posts/{post}/comments', 'CommentController@index');
+
+// 发布
+Route::post('drafts/{draft}/published', 'DraftController@published');
+Route::resource('drafts', 'DraftController');
+
+Route::post('comments', 'CommentController@store');
+
 
 Route::get('users/{user}/posts', 'PostController@index');
 

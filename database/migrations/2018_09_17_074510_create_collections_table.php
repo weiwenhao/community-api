@@ -18,8 +18,11 @@ class CreateCollectionsTable extends Migration
             $table->string('name');
             $table->string('avatar');
             $table->string('description');
+
             $table->unsignedInteger('post_count')->default(0);
             $table->unsignedInteger('fans_count')->default(0);
+
+            $table->unsignedInteger('user_id')->comment('创建者');
 
             $table->timestamps();
         });

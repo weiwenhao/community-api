@@ -4,10 +4,7 @@ namespace App\Models;
 
 class Post extends Model
 {
-//    public function getRouteKeyName()
-//    {
-//        return 'code';
-//    }
+    protected $guarded = [];
 
     public function user()
     {
@@ -22,5 +19,10 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function collections()
+    {
+        return $this->belongsToMany(Collection::class, 'collection_post');
     }
 }

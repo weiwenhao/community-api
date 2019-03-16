@@ -26,6 +26,24 @@ class PostController extends Controller
     }
 
     /**
+     * 推荐帖子
+     * @param $post
+     * @return \Weiwenhao\TreeQL\Resource
+     */
+    public function indexOfRecommend($post)
+    {
+        $collectionIds = $post->collections()->pluck('id');
+
+        $query = Post::whereHas('collections', function ($query) use ($collectionIds) {
+            $query->whereIn('collection_id', $collectionIds);
+        });
+
+        $posts = $query->columns()->latest()->paginate();
+
+        return PostResource::make($posts);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Post $post

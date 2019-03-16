@@ -33,7 +33,10 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
         $data['user_id'] = \Auth::id();
+        $data['floor'] = Comment::where('post_id', $request->input('post_id'))->max('floor') + 1;
+
         $comment = Comment::create($data);
 
         return \response(CommentResource::make($comment), 201);

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Collection;
+use App\Resources\CollectionResource;
 use Illuminate\Http\Request;
 
 class CollectionController extends Controller
@@ -10,11 +12,16 @@ class CollectionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param null $parent
+     * @return \Weiwenhao\TreeQL\Resource
      */
-    public function index()
+    public function index($parent = null)
     {
-        //
+        $query = $parent ? $parent->collections() : Collection::query();
+
+        $collections = $query->columns()->latest()->paginate();
+
+        return CollectionResource::make($collections);
     }
 
     /**

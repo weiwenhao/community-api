@@ -51,4 +51,9 @@ class User extends Model implements
     {
         return $this->hasMany(Draft::class);
     }
+
+    public function likedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'post_likers');
+    }
 }

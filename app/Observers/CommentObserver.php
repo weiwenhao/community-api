@@ -10,4 +10,9 @@ class CommentObserver
     {
         $comment->post()->increment('comment_count');
     }
+
+    public function deleted(Comment $comment)
+    {
+        $comment->post()->increment('comment_count');
+    }
 }

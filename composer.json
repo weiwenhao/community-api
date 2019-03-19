@@ -11,7 +11,7 @@
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
         "staudenmeir/eloquent-eager-limit": "^1.0",
-        "weiwenhao/tree-ql": "^0.6.0@alpha"
+        "weiwenhao/tree-ql": "^0.6.1@alpha"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -63,5 +63,11 @@
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.laravel-china.org"
+        }
+    }
 }

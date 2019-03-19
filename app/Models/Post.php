@@ -25,4 +25,9 @@ class Post extends Model
     {
         return $this->belongsToMany(Collection::class, 'collection_post');
     }
+
+    public function liker()
+    {
+        return $this->hasOne(PostLiker::class)->where('user_id', \Auth::id());
+    }
 }

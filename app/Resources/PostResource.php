@@ -2,6 +2,8 @@
 
 namespace App\Resources;
 
+use App\Models\Post;
+use Illuminate\Support\Facades\Redis;
 use Weiwenhao\TreeQL\Resource;
 
 class PostResource extends Resource
@@ -36,6 +38,9 @@ class PostResource extends Resource
         'user',
         'comments' => [
             'resource' => CommentResource::class,
+        ],
+        'liker' => [
+            'resource' => PostLikerResource::class
         ]
     ];
 
@@ -49,13 +54,21 @@ class PostResource extends Resource
 
 
     /**
-     * @param $item
-     * @param $params
-     * @return mixed
+     * @param Post $post
+     * @return boolean
      */
-    public function liked($item, $params)
+    public function liked($post)
     {
-        return array_random([true, false]);
+        $user = \Auth::user();
+        $key = "user_likers:{$user->id}";
+
+        if (!Redis::exists($key)) {
+            $likedPostIds = $user->likedPosts()->pluck('posts.id')->toArray();
+
+            Redis::sadd($key, $likedPostIds);
+        }
+
+        return (boolean)Redis::sismember($key, $post->id);
     }
 
     public function selectedComments()

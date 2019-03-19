@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFollowCollectionTable extends Migration
+class CreatePostLikersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateFollowCollectionTable extends Migration
      */
     public function up()
     {
-        Schema::create('follow_collection', function (Blueprint $table) {
+        Schema::create('post_likers', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('post_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('collection_id');
             $table->timestamps();
 
+            $table->index('post_id');
             $table->index('user_id');
-            $table->index('collection_id');
 
-            $table->unique(['user_id', 'collection_id']);
+            $table->unique(['post_id', 'user_id']);
         });
     }
 
@@ -32,6 +33,6 @@ class CreateFollowCollectionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('follow_collection');
+        Schema::dropIfExists('post_likers');
     }
 }

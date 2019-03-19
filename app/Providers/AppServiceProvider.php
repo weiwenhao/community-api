@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\PostLiker;
 use App\Observers\CommentObserver;
+use App\Observers\PostLikerObserver;
 use App\Observers\PostObserver;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -21,10 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Auth::loginUsingId(1);
 
         Post::observe(PostObserver::class);
         Comment::observe(CommentObserver::class);
+        PostLiker::observe(PostLikerObserver::class);
     }
 
     /**

@@ -14,12 +14,11 @@ class CreateNotificationsTable extends Migration
     public function up()
     {
         Schema::create('notifications', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id')->primary();
             $table->string('type');
-            $table->json('anchor')->comment('{href: "/posts/aaa", text: "文章标题"}');
-//            $table->json('content')->comment('{call_user: {id: 123, nickname: "bbb"},  text: "我是评论或者回复的内容共"}');
-            $table->unsignedInteger('sender_id')->index();
-            $table->unsignedInteger('receiver_id')->index();
+            $table->morphs('notifiable');
+            $table->json('data')->nullable()->comment('target/content/trigger');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }

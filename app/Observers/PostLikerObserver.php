@@ -3,6 +3,9 @@
 namespace App\Observers;
 
 use App\Models\PostLiker;
+use App\Models\User;
+use App\Notifications\LikePost;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Redis;
 
 class PostLikerObserver
@@ -21,6 +24,10 @@ class PostLikerObserver
         if (Redis::exists($key)) {
             Redis::sadd($key, [$postLiker->post_id]);
         }
+
+        // notify
+        User::findOrFail($postLiker->post->user_id)
+            ->notify(new LikePost($user, $postLiker->post));
     }
 
     public function deleted(PostLiker $postLiker)

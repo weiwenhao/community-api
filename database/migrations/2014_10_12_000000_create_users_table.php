@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('post_count')->default(0);
             $table->unsignedInteger('word_count')->default(0);
             $table->unsignedInteger('like_count')->default(0);
+            $table->unsignedInteger('unread_notification_count')->default(0);
 
             $table->json('oauth')->nullable();
 

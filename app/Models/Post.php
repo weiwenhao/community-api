@@ -30,4 +30,9 @@ class Post extends Model
     {
         return $this->hasOne(PostLiker::class)->where('user_id', \Auth::id());
     }
+
+    public function notification()
+    {
+        return $this->morphOne(Notification::class, 'target');
+    }
 }

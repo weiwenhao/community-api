@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
+use App\Models\Post;
+use App\Resources\NotificationResource;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -11,75 +13,43 @@ class NotificationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Weiwenhao\TreeQL\Resource
      */
     public function index()
     {
-    }
+        $notifications = \Auth::user()->notifications()->columns()->latest()->paginate();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return NotificationResource::make($notifications);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function markAsRead(Request $request)
     {
-        //
-    }
+        $notificationIds = $request->input('notification_ids');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Notification  $notification
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Notification $notification)
-    {
-        //
-    }
+        \Auth::user()->unreadNotifications()
+            ->whereIn('id', $notificationIds)
+            ->update(['read_at' => now()]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Notification  $notification
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Notification $notification)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Notification  $notification
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Notification $notification)
-    {
-        //
+        return $this->created();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Notification  $notification
-     * @return \Illuminate\Http\Response
+     * @param Notification $notification
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Notification $notification)
     {
-        //
+        $notification->delete();
+
+        return $this->noContent();
     }
 }

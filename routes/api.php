@@ -34,6 +34,11 @@ Route::post('posts/{post}/likers', 'PostLikerController@store');
 Route::delete('posts/{post}/likers', 'PostLikerController@destroy');
 
 
+// 通知
+Route::get('notifications', 'NotificationController@index');
+Route::post('notifications/read', 'NotificationController@markAsRead');
+Route::delete('notifications/{notification}', 'NotificationController@store');
+
 /**
  * virtual = hot30/hot7/recommend
  */

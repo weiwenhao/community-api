@@ -56,4 +56,14 @@ class User extends Model implements
     {
         return $this->belongsToMany(Post::class, 'post_likers');
     }
+
+    /**
+     * Get the entity's notifications.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable')->orderBy('created_at', 'desc');
+    }
 }

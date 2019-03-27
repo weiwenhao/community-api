@@ -18,6 +18,7 @@ $factory->define(App\Models\Post::class, function (Faker $faker) {
         'word_count' => mt_rand(250, 1000),
         'selected_at' => array_random([standard_date(time() - mt_rand(0, 2592000)), null]),
         'commented_at' => array_random([standard_date(time() - mt_rand(0, 2592000)), null]),
+        'published_at' => standard_date(),
         'created_at' => standard_date(),
         'updated_at' => standard_date()
     ];

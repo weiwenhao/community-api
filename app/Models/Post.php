@@ -7,8 +7,6 @@ use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    use Searchable;
-
     protected $guarded = [];
 
     public function user()

@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Arr;
+use Laravel\Scout\Searchable;
+
 class Post extends Model
 {
+    use Searchable;
+
     protected $guarded = [];
 
     public function user()
@@ -34,5 +39,12 @@ class Post extends Model
     public function notification()
     {
         return $this->morphOne(Notification::class, 'target');
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        return Arr::only($array, ['title', 'content']);
     }
 }
